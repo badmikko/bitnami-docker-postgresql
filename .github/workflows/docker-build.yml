@@ -27,5 +27,5 @@ jobs:
         with:
           push: true
           tags: badmikko/bitnami-docker-postgresql:tagname,badmikko/bitnami-docker-postgresql:14
-          file: "{context}/14/debian-10/Dockerfile"
+          file: 14/debian-10/Dockerfile
           platforms: linux/amd64,linux/arm64,linux/arm/v7
