@@ -19,7 +19,7 @@ RUN install_packages acl ca-certificates curl gzip libbsd0 libbz2-1.0 libc6 libe
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y wget gnupg \
  && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
- && echo 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main' >> /etc/apt/sources.list
+ && echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install postgresql-14 postgresql-client-14 postgresql-contrib-14 gosu && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
