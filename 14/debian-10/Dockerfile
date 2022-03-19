@@ -6,10 +6,16 @@ ARG TARGETOS TARGETARCH
 ENV HOME="/" \
     OS_ARCH="$TARGETARCH" \
     OS_FLAVOUR="debian-10" \
-    OS_NAME="$TARGETOS"
+    OS_NAME="$TARGETOS" \
+    gid=1000 \
+    uid=1000 \
+    group="postgres"
 
 ARG EXTRA_LOCALES=""
 ARG WITH_ALL_LOCALES="no"
+
+RUN addgroup -g ${gid} -S ${group} && \
+    adduser -u ${uid} -S ${group} -G ${group}
 
 COPY prebuildfs /
 # Install required system packages and dependencies
