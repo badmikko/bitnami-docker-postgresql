@@ -16,7 +16,7 @@ ARG EXTRA_LOCALES=""
 ARG WITH_ALL_LOCALES="no"
 
 RUN addgroup -g ${USER_GID} ${GROUPNAME} && \
-    useradd --no-log-init -r -u ${USER_UID} -g ${USER_UID} ${USERNAME}
+    useradd --no-log-init -r -u ${USER_UID} --gid ${USER_UID} ${USERNAME}
 
 COPY prebuildfs /
 # Install required system packages and dependencies
