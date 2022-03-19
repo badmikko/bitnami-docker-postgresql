@@ -21,7 +21,7 @@ RUN apt-get update \
  && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' >> /etc/apt/sources.list
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install postgresql-14 postgresql-client-14 postgresql-contrib-14 gosu && \
+    apt-get install -y postgresql-14 postgresql-client-14 postgresql-contrib-14 gosu && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
 RUN chmod g+rwX /opt/bitnami
 RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8
