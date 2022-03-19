@@ -7,16 +7,16 @@ ENV HOME="/" \
     OS_ARCH="$TARGETARCH" \
     OS_FLAVOUR="debian-10" \
     OS_NAME="$TARGETOS" \
-    GID=1001 \
-    UID=1001 \
-    GROUP="postgres" \
-    USER="postgres"
+    USER_UID=1001 \
+    USER_GID=1001 \
+    GROUPNAME="postgres" \
+    USERNAME="postgres"
 
 ARG EXTRA_LOCALES=""
 ARG WITH_ALL_LOCALES="no"
 
-RUN addgroup -g ${GID} ${GROUP} && \
-    adduser --uid ${UID} --gid ${GID} ${USER}
+RUN addgroup -g ${USER_GID} ${GROUPNAME} && \
+    useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 COPY prebuildfs /
 # Install required system packages and dependencies
