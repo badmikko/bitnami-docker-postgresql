@@ -1,10 +1,12 @@
 FROM docker.io/bitnami/minideb:buster
 LABEL maintainer "Bitnami <containers@bitnami.com>"
 
+ARG TARGETOS TARGETARCH
+
 ENV HOME="/" \
-    OS_ARCH="amd64" \
+    OS_ARCH="$TARGETARCH" \
     OS_FLAVOUR="debian-10" \
-    OS_NAME="linux"
+    OS_NAME="$TARGETOS"
 
 ARG EXTRA_LOCALES=""
 ARG WITH_ALL_LOCALES="no"
