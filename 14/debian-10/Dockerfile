@@ -31,7 +31,8 @@ RUN echo 'en_GB.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 
 COPY rootfs /
-RUN mkdir -p /opt/bitnami/postgresql/share && \
+RUN find / -name postgresql.conf.sample && \
+    mkdir -p /opt/bitnami/postgresql/share && \
     cp /usr/share/postgresql/postgresql.conf.sample /opt/bitnami/postgresql/share/postgresql.conf.sample
 RUN /opt/bitnami/scripts/postgresql/postunpack.sh
 RUN /opt/bitnami/scripts/locales/add-extra-locales.sh
