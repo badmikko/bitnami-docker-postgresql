@@ -16,7 +16,7 @@ ARG EXTRA_LOCALES=""
 ARG WITH_ALL_LOCALES="no"
 
 RUN addgroup -g ${GID} ${GROUP} && \
-    adduser -u ${UID} -g ${GROUP} ${USER}
+    adduser --uid ${UID} --gid ${GID} ${USER}
 
 COPY prebuildfs /
 # Install required system packages and dependencies
