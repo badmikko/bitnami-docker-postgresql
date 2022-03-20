@@ -39,12 +39,12 @@ RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 
 COPY rootfs /
 RUN mkdir -p /opt/bitnami/postgresql/share /opt/bitnami/postgresql/conf /opt/bitnami/postgresql/tmp /opt/bitnami/postgresql/bin && \
-    chown -R ${USER_UID}:${USER_GID} /opt/bitnami/postgresql/share /opt/bitnami/postgresql/conf /opt/bitnami/postgresql/tmp /opt/bitnami/postgresql/bin && \
     cp /usr/share/postgresql/14/postgresql.conf.sample /opt/bitnami/postgresql/share/postgresql.conf.sample && \
     ln -s /usr/lib/postgresql/14/bin/postgresql /opt/bitnami/postgresql/bin/postgresql && \
     ln -s /usr/lib/postgresql/14/bin/initdb /opt/bitnami/postgresql/bin/initdb
 RUN /opt/bitnami/scripts/postgresql/postunpack.sh
 RUN /opt/bitnami/scripts/locales/add-extra-locales.sh
+RUN chown -R ${USER_UID}:${USER_GID} /opt/bitnami/postgresql/share /opt/bitnami/postgresql/conf /opt/bitnami/postgresql/tmp /opt/bitnami/postgresql/bin
 ENV BITNAMI_APP_NAME="postgresql" \
     BITNAMI_IMAGE_VERSION="14.2.0-debian-10-r36" \
     LANG="en_US.UTF-8" \
