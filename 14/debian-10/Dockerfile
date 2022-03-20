@@ -44,7 +44,8 @@ RUN mkdir -p /opt/bitnami/postgresql/share /opt/bitnami/postgresql/conf /opt/bit
     ln -s /usr/lib/postgresql/14/bin/initdb /opt/bitnami/postgresql/bin/initdb
 RUN /opt/bitnami/scripts/postgresql/postunpack.sh
 RUN /opt/bitnami/scripts/locales/add-extra-locales.sh
-RUN chown -R ${USER_UID}:${USER_GID} /opt/bitnami/postgresql/share /opt/bitnami/postgresql/conf /opt/bitnami/postgresql/tmp /opt/bitnami/postgresql/bin /bitnami/postgresql/conf
+RUN chown -R ${USER_UID}:${USER_GID} /opt/bitnami/postgresql/share /opt/bitnami/postgresql/conf /opt/bitnami/postgresql/tmp /opt/bitnami/postgresql/bin && \
+    ls -lart /opt/bitnami/postgresql/conf
 ENV BITNAMI_APP_NAME="postgresql" \
     BITNAMI_IMAGE_VERSION="14.2.0-debian-10-r36" \
     LANG="en_US.UTF-8" \
